@@ -1,4 +1,7 @@
 /**
+ * https://leetcode.com/problems/median-of-two-sorted-arrays/description/
+ * Median of two sorted arrays from LeetCode
+ * Level: hard
  * @param {number[]} nums1
  * @param {number[]} nums2
  * @return {number}

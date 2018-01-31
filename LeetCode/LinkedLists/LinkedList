@@ -1,0 +1,104 @@
+/*Constructor of a double linked list object*/
+function DoubleLinkedList(){
+  this.head = null;
+}
+
+/*Push a node with value from argument val into the rear of the double linkedlist*/
+DoubleLinkedList.prototype.push = function(val){
+  var node = {
+      val: val,
+      next: null,
+      prev: null
+    }
+  if(this.head === null){
+    this.head = node;
+  }else{
+    var tmpNode = this.head;
+    while(tmpNode.next){
+      tmpNode = tmpNode.next;
+    }
+    tmpNode.next = node;
+    tmpNode.next.prev = tmpNode;
+  }
+}
+
+/*Get the length of the double linked list object*/
+/*returns an integer*/
+DoubleLinkedList.prototype.length = function(){
+  if(this.head === null){
+    return 0;
+  }else{
+    var tmpNode = this.head;
+    var l = 1;
+    while(tmpNode.next){
+      tmpNode = tmpNode.next;
+      l++;
+    }
+    return l;
+  }
+}
+
+/*Pop the last node in the double linked list*/
+DoubleLinkedList.prototype.pop = function(){
+  let l = this.length();
+  if(l === 1){
+    this.head = null;
+  }else{
+    var tmpNode = this.head;
+    for(i = 1; i < l-1; i++){
+      tmpNode = tmpNode.next;
+    }
+    tmpNode.next = undefined;
+  }
+  return;
+}
+
+/*Get node by index number*/
+/*Returns a node object*/
+DoubleLinkedList.prototype.getNodeAtIndex = function(index){
+  if(index >= this.length()){
+    return;
+  }else{
+    var tmpNode = this.head;
+    for(i = 0; i < index; i++){
+      tmpNode = tmpNode.next;
+    }
+    return tmpNode;
+  }
+}
+
+/*Print all nodes*/
+DoubleLinkedList.prototype.print = function(){
+  let l = this.length();
+  var tmpNode = this.head;
+  i = 0;
+  if(!this.head){
+    console.log('Empty DoubleLinkedList!');
+    return;
+  }
+  if(l === 1){
+    console.log('The DoubleLinkedList only has 1 node with value '+this.head.val);
+  }else{
+    while(tmpNode.next){
+      if(i >= 1){
+        console.log('The node at index '+i+' has value '+tmpNode.val+' and previous value '+tmpNode.prev.val+' and next value '+tmpNode.next.val);
+      }else{
+        console.log('The node at index '+i+' has value '+tmpNode.val+' and next value '+tmpNode.next.val);
+      }
+      i++;
+      tmpNode = tmpNode.next;
+    }
+  }
+}
+
+var a = new DoubleLinkedList();
+a.push(0);
+a.push(1);
+a.push(2);
+a.push(3);
+a.push(4);
+a.print();
+//console.log(a.getNodeAtIndex(2).val);
+console.log(a.getNodeAtIndex(4).prev.val);
+
+//stepanov@sfu.ca
