@@ -1,0 +1,72 @@
+function ListNode(val){
+  this.val = val;
+  this.next = null;
+}
+
+/**
+ * https://leetcode.com/problems/add-two-numbers/description/
+ * Difficulty level: medium
+ * Definition for singly-linked list.
+ * function ListNode(val) {
+ *     this.val = val;
+ *     this.next = null;
+ * }
+ */
+/**
+ * @param {ListNode} l1
+ * @param {ListNode} l2
+ * @return {ListNode}
+ */
+var addTwoNumbers = function(l1, l2) {
+
+    var tempCheckl1 = l1;
+    var tempCheckl2 = l2;
+    while(tempCheckl1.next !== null){
+        if(tempCheckl2.next === null){
+            tempCheckl2.next = new ListNode(0);
+        }
+        tempCheckl1 = tempCheckl1.next;
+        tempCheckl2 = tempCheckl2.next;
+    }
+
+    tempCheckl1 = l1;
+    tempCheckl2 = l2;
+
+    while(tempCheckl2.next !== null){
+        if(tempCheckl1.next === null){
+            tempCheckl1.next = new ListNode(0);
+        }
+        tempCheckl1 = tempCheckl1.next;
+        tempCheckl2 = tempCheckl2.next;
+    }
+    var carry = 0;
+    var initialVal = l1.val + l2.val;
+    var returnList;
+    if(initialVal > 9){
+        carry = 1;
+        returnList = new ListNode(initialVal - 10);
+    }else{
+        returnList = new ListNode(initialVal)
+    }
+    var templ1 = l1.next;
+    var templ2 = l2.next;
+    var tempNodeToAdd = returnList;
+
+    while(templ1 && templ2){
+        var tempSum = templ1.val + templ2.val + carry;
+        if(tempSum > 9){
+            carry = 1;
+            tempNodeToAdd.next = new ListNode(tempSum-10);
+        }else{
+            carry = 0;
+            tempNodeToAdd.next = new ListNode(tempSum);
+        }
+        tempNodeToAdd = tempNodeToAdd.next;
+        templ1 = templ1.next;
+        templ2 = templ2.next;
+    }
+    if(carry === 1){
+        tempNodeToAdd.next = new ListNode(1);
+    }
+    return(returnList);
+};
