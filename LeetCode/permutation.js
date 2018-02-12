@@ -1,6 +1,6 @@
 /**
  * https://leetcode.com/problems/permutations/description/
- * Difficulty: hard
+ * Difficulty: medium
  * @param {number[]} nums
  * @return {number[][]}
  */
