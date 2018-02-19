@@ -16,7 +16,6 @@ def two_sum(nums, target)
         end
         i = i+1
     end
-
 end
 
 a=[1,2,3,4,5]
