@@ -1,3 +1,5 @@
+# https://leetcode.com/problems/permutations/description/
+# difficulty: medium
 # @param {Integer[]} nums
 # @return {Integer[][]}
 def permute(nums)
