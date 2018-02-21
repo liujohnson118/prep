@@ -2,22 +2,20 @@
 # @param {Integer} target
 # @return {Integer[]}
 def two_sum(nums, target)
-    i = 0
-    ret = []
-    while i < nums.length
-        tmp = nums.index(target-nums[i])
-        ##puts "i is #{i} and tmp is #{tmp}"
-        if tmp !=nil && tmp != i
-           ret.push(i)
-           ret.push(tmp)
-           ret.sort!
-           return ret
-            break
+    i=0
+    j=nums.length-1
+    nums = nums.sort!
+    while ((nums[i]+nums[j])!=target)
+        if (nums[i]+nums[j])>target
+            j -= 1
+        else
+            i += 1
         end
-        i = i+1
     end
+    return [i,j]
 end
 
-a=[1,2,3,4,5]
+a=[3,2,4]
 b=[3,3]
-puts two_sum(b,6)
+puts two_sum(a,6)
+#puts a[0]+a[2]!=6
