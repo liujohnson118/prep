@@ -1,0 +1,10 @@
+def validateEmail(email)
+  if email.index('+') != nil
+    return email.slice(0,email.index("+"))+email.slice(email.index("@"),email.length)
+  else
+    return email
+  end
+end
+
+puts validateEmail("johnson+bank+ing@gmail.com")
+puts validateEmail("johnsonbanking@gmail.com")

@@ -1,0 +1,24 @@
+def newArray(arr)
+  arr_len = arr.length
+  arr_out = Array.new(arr_len*arr_len) { Array.new(arr_len*arr_len)}
+  for i in 0..(arr_len-1)
+    for j in 0..(arr_len-1)
+      val = arr[i][j]
+      val_new = val*0.25
+      arr_out[2*i][2*j]=val_new
+      arr_out[2*i][2*j+1]=val_new
+      arr_out[2*i+1][2*j]=val_new
+      arr_out[2*i+1][2*j+1]=val_new
+    end
+  end
+  return arr_out
+end
+
+myArr=Array.new(2){Array.new(2)}
+myArr[0][0]=4
+myArr[0][1]=8
+myArr[1][0]=10
+myArr[1][1]=20
+
+a=newArray(myArr)
+puts a
